@@ -1,0 +1,46 @@
+from decimal import *
+
+def power(number,exponent):
+    a = number
+    if exponent >= 1 and isinstance(exponent,int):
+        print("power")
+        a = number
+        for i in range(exponent-1):
+            a = a * number
+    if exponent >0 and exponent <1:
+        print("Fractional Power")
+        frac = Decimal(exponent).as_integer_ratio()
+        b = rand.uniform(0,number)
+        for i in range(0,1000):
+            c = b
+            for i in range(frac[1]-1):
+                c = c * b
+            if c > number:
+                b = b - (c - number)/10
+            if c < number:
+                b = b + (number - c)/10
+        a = b
+    if exponent < 0:
+        print("Negative Power")
+        a = number
+        for i in range(exponent):
+            a = a * number
+        a = 1/a
+    if exponent>1 and (isinstance(exponent,int) == False):
+        print("Top heavy fractional power")
+        frac = Decimal(exponent).as_integer_ratio()
+        a = number
+        for i in range(frac[0]-1):
+            a = a * number
+        number = a
+        b = rand.uniform(0,number)
+        for i in range(0,1000):
+            c = b
+            for i in range(frac[1]-1):
+                c = c * b
+            if c > number:
+                b = b - (c - number)/10
+            if c < number:
+                b = b + (number - c)/10
+        a = b
+    return a
